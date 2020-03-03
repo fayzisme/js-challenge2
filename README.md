@@ -137,9 +137,6 @@ Beberapa static method yang bisa dipakai didalam Promise.
 - Promise.resolve(value)
 - Promise.reject(value)
 
-```sh
-$ git checkout -b new_branch
-```
 Beberapa method property yang ada di Promise.
 - then()
 - catch()
@@ -147,3 +144,21 @@ Beberapa method property yang ada di Promise.
 
 #### Async - await
 Async function merupakan function yang mengandung ekspresi `await` untuk menunggu hasil dari sebuah promise diselesaikan terlebih dahulu (synchronous).
+```sh
+function resolveAfter2Seconds() {
+  return new Promise(resolve => {
+    setTimeout(() => {
+      resolve('resolved');
+    }, 2000);
+  });
+}
+
+async function asyncCall() {
+  console.log('calling');
+  const result = await resolveAfter2Seconds();
+  console.log(result);
+  // expected output: 'resolved'
+}
+
+asyncCall();
+```
